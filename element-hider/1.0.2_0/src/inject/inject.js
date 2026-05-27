@@ -92,23 +92,44 @@ function injectStyles() {
         }
         #${PICKER_UI_ID}-dialog {
             position: fixed !important; z-index: 2147483647 !important; top: 20px !important; right: 20px !important;
-            width: 350px !important; background: #fff !important; border: 1px solid #ccc !important;
-            border-radius: 8px !important; box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+            width: 350px !important; background: linear-gradient(180deg, rgba(16, 27, 45, 0.98), rgba(9, 17, 30, 0.99)) !important;
+            border: 1px solid rgba(112, 214, 255, 0.18) !important;
+            border-radius: 8px !important; box-shadow: 0 18px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(112, 214, 255, 0.05) !important;
             padding: 15px !important; font-family: 'Roboto', sans-serif !important; font-size: 14px !important;
-            color: #333 !important; display: block !important; box-sizing: content-box !important;
+            color: #f4f8ff !important; display: block !important; box-sizing: content-box !important;
         }
         #${PICKER_UI_ID}-dialog * { font-family: 'Roboto', sans-serif !important; }
-        #${PICKER_UI_ID}-dialog h3 { margin: 0 0 10px !important; font-size: 16px !important; font-weight: 600 !important; }
-        #${PICKER_UI_ID}-dialog label { font-weight: 500 !important; margin-bottom: 5px !important; display: block !important; }
-        #${PICKER_UI_ID}-dialog .selector-input { width: 100% !important; padding: 8px !important; box-sizing: border-box !important; border: 1px solid #ccc !important; border-radius: 4px !important; margin-bottom: 10px !important; font-family: monospace !important; }
+        #${PICKER_UI_ID}-dialog h3 { margin: 0 0 10px !important; font-size: 16px !important; font-weight: 600 !important; color: #f4f8ff !important; }
+        #${PICKER_UI_ID}-dialog label { font-weight: 500 !important; margin-bottom: 5px !important; display: block !important; color: #91a7bf !important; }
+        #${PICKER_UI_ID}-dialog .selector-input {
+            width: 100% !important; padding: 8px !important; box-sizing: border-box !important;
+            background: rgba(5, 10, 20, 0.72) !important; border: 1px solid rgba(112, 214, 255, 0.18) !important;
+            border-radius: 4px !important; margin-bottom: 10px !important; font-family: monospace !important;
+            color: #f4f8ff !important; outline: none !important;
+        }
+        #${PICKER_UI_ID}-dialog .selector-input:focus {
+            border-color: #35d7ff !important;
+            box-shadow: 0 0 0 3px rgba(53, 215, 255, 0.14), 0 0 26px rgba(53, 215, 255, 0.12) !important;
+        }
         #${PICKER_UI_ID}-dialog .parents-nav { display: flex !important; gap: 5px !important; margin-bottom: 10px !important; flex-wrap: wrap !important; }
-        #${PICKER_UI_ID}-dialog .parent-btn { background: #f0f0f0 !important; border: 1px solid #ccc !important; border-radius: 4px !important; padding: 3px 8px !important; cursor: pointer !important; }
-        #${PICKER_UI_ID}-dialog .parent-btn:hover { background: #e0e0e0 !important; }
-        #${PICKER_UI_ID}-dialog .parent-btn.active { background: #007bff !important; color: white !important; border-color: #007bff !important; }
-        #${PICKER_UI_ID}-dialog .match-count { font-size: 12px !important; margin-bottom: 15px !important; }
+        #${PICKER_UI_ID}-dialog .parent-btn {
+            background: rgba(255, 255, 255, 0.05) !important; border: 1px solid rgba(112, 214, 255, 0.18) !important;
+            border-radius: 4px !important; padding: 3px 8px !important; cursor: pointer !important; color: #91a7bf !important;
+        }
+        #${PICKER_UI_ID}-dialog .parent-btn:hover { background: rgba(53, 215, 255, 0.12) !important; color: #7be8ff !important; }
+        #${PICKER_UI_ID}-dialog .parent-btn.active { background: linear-gradient(135deg, #35d7ff, #1788ff) !important; color: #03111f !important; border-color: transparent !important; }
+        #${PICKER_UI_ID}-dialog .match-count { font-size: 12px !important; margin-bottom: 15px !important; color: #91a7bf !important; }
         #${PICKER_UI_ID}-dialog .actions { display: flex !important; justify-content: flex-end !important; gap: 10px !important; }
-        #${PICKER_UI_ID}-dialog .actions button { padding: 8px 15px !important; border-radius: 4px !important; border: 1px solid #ccc !important; cursor: pointer !important; background: #f8f8f8 !important; color: #333 !important;}
-        #${PICKER_UI_ID}-dialog .actions button.save-btn { background: #28a745 !important; color: white !important; border-color: #28a745 !important; }
+        #${PICKER_UI_ID}-dialog .actions button {
+            padding: 8px 15px !important; border-radius: 4px !important; border: 1px solid rgba(112, 214, 255, 0.18) !important;
+            cursor: pointer !important; background: rgba(255, 255, 255, 0.05) !important; color: #f4f8ff !important;
+        }
+        #${PICKER_UI_ID}-dialog .actions button:hover { background: rgba(53, 215, 255, 0.12) !important; color: #7be8ff !important; }
+        #${PICKER_UI_ID}-dialog .actions button.save-btn {
+            background: linear-gradient(135deg, #35d7ff, #1788ff) !important; color: #03111f !important;
+            border-color: transparent !important; box-shadow: 0 10px 24px rgba(53, 215, 255, 0.22) !important;
+        }
+        #${PICKER_UI_ID}-dialog .actions button.save-btn:hover { background: linear-gradient(135deg, #7be8ff, #35d7ff) !important; color: #03111f !important; }
         .ehext-preview-highlight {
             position: fixed !important; background-color: rgba(220, 53, 69, 0.3) !important;
             border: 2px solid #dc3545 !important; z-index: 2147483645 !important;
@@ -126,7 +147,6 @@ function startPickerMode() {
     cleanupPicker(); 
     isPickerActive = true;
     injectStyles();
-    showGuidance("Click on an element to hide it. Press 'Escape' to cancel.");
 
     highlightBox = document.createElement('div');
     highlightBox.id = `${PICKER_UI_ID}-highlighter`;
