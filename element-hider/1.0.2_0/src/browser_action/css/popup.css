@@ -27,6 +27,23 @@ body {
   line-height: 1.5;
 }
 
+html,
+body,
+#mainPopup,
+#keyword-list-container,
+#bulk-view textarea {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#mainPopup::-webkit-scrollbar,
+#keyword-list-container::-webkit-scrollbar,
+#bulk-view textarea::-webkit-scrollbar {
+  display: none;
+}
+
 #mainPopup { 
   padding: 15px; 
   position: relative;
@@ -773,4 +790,3 @@ code {
   border-color: var(--border-color);
   color: var(--primary-color);
 }
-
