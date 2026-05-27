@@ -174,12 +174,99 @@ $(document).ready(function() {
         }
     });
 
+    function isInjectableFrameUrl(url) {
+        return /^https?:\/\//.test(url || '');
+    }
+
+    function alertPickerUnavailable(activeUrl) {
+        if ((activeUrl || '').startsWith('chrome-extension://')) {
+            alert("ElementHider cannot inspect the extension page itself.\n\nFor MultiView, reload ElementHider and MultiView, open websites inside MultiView frames, then try the picker again inside the website frame. MultiView's own buttons/UI still must be edited in MultiView code.");
+            return;
+        }
+        alert("ElementHider's content script is not responding on this page.\n\nPlease try refreshing the page. This is often required after first installing or updating an extension.");
+    }
+
+    function sendPickerToFrame(tabId, frameId, action, callback) {
+        chrome.tabs.sendMessage(tabId, { action: action }, { frameId: frameId }, function(response) {
+            callback(!chrome.runtime.lastError && response && response.status === "ok");
+        });
+    }
+
+    function activatePickerInFrames(tab, action) {
+        chrome.webNavigation.getAllFrames({ tabId: tab.id }, function(frames) {
+            if (chrome.runtime.lastError || !Array.isArray(frames)) {
+                alertPickerUnavailable(tab.url);
+                return;
+            }
+
+            const frameIds = frames
+                .filter(frame => isInjectableFrameUrl(frame.url))
+                .map(frame => frame.frameId);
+
+            if (!frameIds.length) {
+                alertPickerUnavailable(tab.url);
+                return;
+            }
+
+            let pending = frameIds.length;
+            let startedCount = 0;
+            frameIds.forEach(frameId => {
+                sendPickerToFrame(tab.id, frameId, action, function(started) {
+                    if (started) startedCount++;
+                    pending--;
+                    if (pending === 0) {
+                        if (startedCount > 0) {
+                            window.close();
+                        } else {
+                            alertPickerUnavailable(tab.url);
+                        }
+                    }
+                });
+            });
+        });
+    }
+
+    function activatePickerInExternalExtension(tab, action, callback) {
+        let extensionId = '';
+        try {
+            extensionId = new URL(tab.url).hostname;
+        } catch (e) {
+            callback(false);
+            return;
+        }
+
+        if (!extensionId || extensionId === chrome.runtime.id) {
+            callback(false);
+            return;
+        }
+
+        chrome.runtime.sendMessage(extensionId, {
+            action: 'elementHiderStartPicker',
+            pickerAction: action,
+            tabId: tab.id
+        }, function(response) {
+            callback(!chrome.runtime.lastError && response && response.status === 'ok');
+        });
+    }
+
     function activatePicker(action) {
         chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
             if (tabs[0] && tabs[0].id) {
-                chrome.tabs.sendMessage(tabs[0].id, { action: action }, function(response) {
+                const tab = tabs[0];
+                if (chrome.webNavigation && tab.url && tab.url.startsWith('chrome-extension://')) {
+                    activatePickerInExternalExtension(tab, action, function(started) {
+                        if (started) {
+                            window.close();
+                        } else {
+                            activatePickerInFrames(tab, action);
+                        }
+                    });
+                    return;
+                }
+
+                chrome.tabs.sendMessage(tab.id, { action: action }, function(response) {
                     if (chrome.runtime.lastError) {
-                        alert("ElementHider's content script is not responding on this page.\n\nPlease try refreshing the page. This is often required after first installing or updating an extension.");
+                        alertPickerUnavailable(tab.url);
                     } else if (response && response.status === "ok") {
                         window.close();
                     }
