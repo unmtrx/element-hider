@@ -15,6 +15,7 @@
    },
    "content_scripts": [ {
       "js": [ "src/browser_action/jquery.min.js", "src/shared/keywordUtils.js", "src/inject/inject.js" ],
+      "all_frames": true,
       "matches": [ "*://*/*" ],
       "run_at": "document_start"
    } ],
@@ -30,7 +31,7 @@
    "options_ui": {
       "page": "src/browser_action/KeywordEditor.html"
    },
-   "permissions": [ "storage", "tabs" ],
+   "permissions": [ "storage", "tabs", "webNavigation" ],
    "update_url": "https://clients2.google.com/service/update2/crx",
    "version": "1.0.2",
    "web_accessible_resources": [ {
