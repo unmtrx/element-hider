@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Element-Hider Guide</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Source+Sans+Pro:400,600,700" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/guide.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <h1 id="logo">Element-Hider</h1>
+            </div>
+            <h1>How-to Guide</h1>
+            <p>Your guide to a cleaner, quieter web.</p>
+        </header>
+
+        <section class="guide-section">
+            <h2>Getting Started: Main Controls</h2>
+            <div class="instruction-card">
+                <div class="icon-visual">
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="text">
+                    <h3>Hiding Active (On/Off)</h3>
+                    <p>This is the master switch in the popup. When "On", the extension will actively hide elements based on your rules. When "Off", all hiding is disabled.</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                 <div class="icon-visual">
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider round" style="background-color: #28A745;"></span>
+                    </label>
+                 </div>
+                <div class="text">
+                    <h3>Test Mode</h3>
+                    <p>Instead of hiding elements, Test Mode highlights them in bright green. This is perfect for safely checking what your rules will affect without making things disappear.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>Adding Hiding Rules</h2>
+            <div class="instruction-card">
+                 <div class="icon-visual">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4c-4.42 0-8 1.79-8 4s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zm0 6c-3.31 0-6-1.34-6-3s2.69-3 6-3 6 1.34 6 3-2.69 3-6 3zm0 4c-4.42 0-8 1.79-8 4s3.58 4 8 4 8-1.79 8-4-3.58-4-8-4zm0 6c-3.31 0-6-1.34-6-3s2.69-3 6-3 6 1.34 6 3-2.69 3-6 3z"/></svg>
+                 </div>
+                <div class="text">
+                    <h3>1. Add Keyword Manually</h3>
+                    <p>Type a word into the input box and click the <strong>+</strong> button. Use the checkboxes for "Exact Match" or "Case Insensitive" as needed.</p>
+                </div>
+            </div>
+             <div class="instruction-card">
+                 <div class="icon-visual">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                 </div>
+                <div class="text">
+                    <h3>2. Add CSS Selector</h3>
+                    <p>For targeting specific parts of a page layout. Type a CSS selector (e.g., <code>div.advert</code>), check the "CSS Selector" box, and click <strong>+</strong>.</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                 <div class="icon-visual">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>
+                 </div>
+                <div class="text">
+                    <h3>3. Use the Word Selector Tool</h3>
+                    <p>Click the "Select Word" tool in the popup. On any webpage, hover to highlight words and click to confirm. The popup will open with your selected word ready to be saved.</p>
+                </div>
+            </div>
+             <div class="instruction-card">
+                 <div class="icon-visual">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                    </svg>
+                 </div>
+                <div class="text">
+                    <h3>4. Use the Element Selector Tool</h3>
+                    <p>For hiding specific page sections like sidebars or ad boxes. Click the "Select Element" tool, then click any part of a page. A dialog will help you create a precise hiding rule for it.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="guide-section">
+            <h2>Display & Hiding Options</h2>
+            <p>These settings can be found in the Advanced Config page, which you can open by clicking the gear icon ⚙️ in the popup.</p>
+             <div class="instruction-card">
+                 <div class="icon-visual">
+                    <div class="blur-vis-container">
+                        <span>Original</span>
+                        <span class="blurred">Blurred</span>
+                    </div>
+                 </div>
+                <div class="text">
+                    <h3>Blur Instead of Hiding</h3>
+                    <p>Instead of making elements disappear completely, you can choose to blur them. This is useful if you occasionally want to see the content.</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                <div class="text">
+                    <h3>Reveal on Hover</h3>
+                    <p>This option only works when "Blur" is active. When you move your mouse over a blurred element, it will become clear, allowing you to read it.</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                 <div class="text">
+                    <h3>Hiding Sensitivity (Global vs. Keyword)</h3>
+                    <p>This slider (1-500) controls how large of an area around a found keyword gets hidden. A low value is cautious, while a high value is aggressive and hides a larger parent container.</p>
+                     <p>You can set this <strong>globally</strong> in the Advanced Config, or set it for an <strong>individual keyword</strong> using its "Advanced Options" in the popup. A keyword-specific sensitivity will always override the global setting.</p>
+                    <div class="sensitivity-vis-container">
+                        <div class="sensitivity-vis low">
+                            <span>Keyword</span>
+                            <div class="label">Low Sensitivity</div>
+                        </div>
+                        <div class="sensitivity-vis high">
+                             <span>Keyword</span>
+                             <div class="label">High Sensitivity</div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>Global Site Settings</h2>
+             <p>In the Advanced Config page, you can control which websites the extension runs on.</p>
+             <div class="instruction-card">
+                <div class="text">
+                    <h3>Disable on Sites Below (Blacklist)</h3>
+                    <p>The extension will run on all websites <strong>except</strong> for the ones you list in the text box. Use this to exclude sites where you don't want hiding to occur.</p>
+                </div>
+            </div>
+             <div class="instruction-card">
+                <div class="text">
+                    <h3>Enable ONLY on Sites Below (Whitelist)</h3>
+                    <p>The extension will <strong>only</strong> run on the websites you list in the text box. Use this if you only need the extension for a few specific sites.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guide-section">
+            <h2>For Power Users: Bulk Editing & Syntax</h2>
+            <div class="instruction-card">
+                <div class="icon-visual">
+                   <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                </div>
+                <div class="text">
+                    <h3>Bulk Edit</h3>
+                    <p>Click the "Bulk Edit" tool (pencil icon) to see a raw text version of your keyword list. You can quickly add, remove, or copy-paste many rules at once. Each rule must be on a new line.</p>
+                </div>
+            </div>
+            <div class="instruction-card">
+                <div class="text">
+                    <h3>Keyword Syntax Reference</h3>
+                    <p>When bulk editing, you can use the following syntax:</p>
+                    <p><code>// This is a comment and will be ignored.</code></p>
+                    <p><code>keyword</code> - Hides any element containing this text.</p>
+                    <p><code>*keyword</code> - (Exact Match) Hides only the whole word.</p>
+                    <p><code>keyword^</code> - (Case Insensitive) Hides "keyword", "Keyword", "KEYWORD", etc.</p>
+                    <p><code>*keyword^</code> - You can combine options.</p>
+                    <p><code>{div.advert}</code> - Hides elements using a CSS selector.</p>
+                    <hr>
+                    <p><strong>Advanced Rule Format:</strong> <code>keyword >>> [URL] &&& [Sensitivity]</code></p>
+                    <p>The <code>>>></code> marker indicates that advanced rules follow. The URL always comes first, then sensitivity. If the URL is blank, the space is preserved.</p>
+                    <p><code>sports >>> reddit.com</code> - Hides "sports" only on reddit.com.</p>
+                    <p><code>news >>> &&& 75</code> - Hides "news" on all sites with a specific sensitivity of 75.</p>
+                    <p><code>politics >>> cnn.com &&& 250</code> - Hides "politics" only on cnn.com with a high sensitivity of 250.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

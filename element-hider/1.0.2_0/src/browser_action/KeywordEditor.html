@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400|Source+Sans+Pro:200" rel="stylesheet">
+    <link rel="stylesheet" href="./css/editor.css">
+    <title>ElementHider Advanced Config</title>
+</head>
+<body>
+    <div class="main-container">
+
+        <div class="column keywords-column">
+            <div class="manager-header">
+                <h2 id="subLogo">Keywords</h2>
+                <div class="manager-tools">
+                     <a id="guideLink" href="#" title="Open Guide">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
+                    </a>
+                     <button id="toggle-view-btn" class="tool-btn" title="Bulk Edit">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="list-view">
+                <div id="add-keyword-form-container">
+                    <div id="add-keyword-form">
+                        <div class="form-row">
+                            <input type="text" id="new-keyword-text" placeholder="Add a new keyword...">
+                            <button id="add-keyword-btn" title="Add Keyword">+</button>
+                        </div>
+                        <div class="form-row options-row">
+                            <label><input type="checkbox" id="new-keyword-exact"> Exact Match</label>
+                            <label><input type="checkbox" id="new-keyword-case"> Case Insensitive</label>
+                            <label><input type="checkbox" id="new-keyword-selector"> CSS Selector</label>
+                        </div>
+                        <div class="advanced-options-header">
+                            <label for="advanced-toggle" class="advanced-options-label">Advanced Options</label>
+                            <label class="switch">
+                                <input type="checkbox" id="advanced-toggle">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div id="advanced-options-container" class="hidden">
+                             <div class="form-row url-row" title="The keyword will only be active on pages containing this URL. Leave blank for all sites.">
+                                <input type="text" id="new-keyword-url" class="url-input" placeholder="e.g., example.com">
+                            </div>
+                            <div class="form-row sensitivity-row">
+                                <label class="sensitivity-label">Keyword Sensitivity</label>
+                                <div class="sensitivity-slider-container">
+                                   <input type="range" id="new-keyword-sensitivity" min="1" max="500" value="50" class="sensitivity-input">
+                                   <span class="sensitivity-value-display">50</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <fieldset id="saved-keywords-fieldset">
+                    <legend>Saved Keywords</legend>
+                    <div id="keyword-list-container"></div>
+                </fieldset>
+            </div>
+            <div id="bulk-view" class="hidden">
+                <textarea id="keywords-bulk" placeholder="Separate keywords with a new line..."></textarea>
+                <button id="save-bulk-btn">Save Bulk Changes</button>
+            </div>
+             <div id="storage-meter-container">
+                <div id="storage-label">Storage Used: <span id="storage-percentage">0%</span></div>
+                <div id="storage-progress-bar">
+                    <div id="storage-progress"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column options-column">
+            <div class="manager-header">
+                <h2 id="subLogo">Options</h2>
+            </div>
+            <div id="options-container">
+                 <fieldset>
+                    <legend><b>Display Settings</b></legend>
+                    <div class="setting-row">
+                        <span class="setting-label">Blur elements instead of hiding</span>
+                        <label class="switch">
+                            <input type="checkbox" id="blurred">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                     <div class="setting-row" id="hoveringOption">
+                        <span class="setting-label">Reveal on hover (only when blurring)</span>
+                        <label class="switch">
+                            <input type="checkbox" id="hovering">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend><b>Hiding Behavior</b></legend>
+                    <div id="sensitivity-container">
+                        <label for="hidingSensitivity">Global Hiding Sensitivity: <span id="sensitivityValue">50</span></label>
+                        <input type="range" id="hidingSensitivity" min="1" max="500" step="1">
+                        <div class="sensitivity-labels">
+                            <span>Cautious</span>
+                            <span>Balanced</span>
+                            <span>Aggressive</span>
+                        </div>
+                        <div class="sensitivity-description">Controls how large of an area around a keyword is hidden.</div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend><b>Global Site Settings</b></legend>
+                    <label><input type="radio" name="option" id="disabler" /> Disable on sites below</label>
+                    <label><input type="radio" name="option" id="enabler" /> Enable ONLY on sites below</label>
+                    <textarea id="urls" placeholder="example.com, another-site.org"></textarea>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-overlay" class="hidden"></div>
+    <div id="edit-modal" class="hidden">
+        <div class="modal-content">
+            <h3>Edit Keyword</h3>
+            <div id="edit-keyword-form"></div>
+            <div class="modal-actions">
+                <button id="modal-save-btn">Save Changes</button>
+                <button id="modal-cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="keyword-item-template">
+        <div class="keyword-item">
+            <span class="keyword-text"></span>
+            <div class="keyword-tags">
+                <span class="tag selector-tag hidden" title="CSS Selector">&lt;/&gt;</span>
+                <span class="tag exact-tag hidden" title="Exact Match">*</span>
+                <span class="tag case-tag hidden" title="Case-Insensitive">aA</span>
+            </div>
+            <span class="keyword-url"></span>
+            <button class="delete-btn" title="Delete keyword">X</button>
+        </div>
+    </template>
+    <script type="text/javascript" src="../shared/keywordUtils.js"></script>
+    <script type="text/javascript" src='KeywordEditor.js'></script>
+</body>
+</html>

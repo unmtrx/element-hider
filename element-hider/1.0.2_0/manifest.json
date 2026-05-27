@@ -1,0 +1,40 @@
+{
+   "action": {
+      "default_icon": "icons/icon.png",
+      "default_popup": "src/browser_action/popup.html",
+      "default_title": "ElementHider"
+   },
+   "background": {
+      "service_worker": "bg.js"
+   },
+   "browser_specific_settings": {
+      "gecko": {
+         "id": "elementhider@vh",
+         "strict_min_version": "109.0"
+      }
+   },
+   "content_scripts": [ {
+      "js": [ "src/browser_action/jquery.min.js", "src/shared/keywordUtils.js", "src/inject/inject.js" ],
+      "matches": [ "*://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Hides elements that contain keywords set by user",
+   "homepage_url": "https://addons.mozilla.org/firefox/addon/elementhider-vh/",
+   "host_permissions": [ "*://*/*" ],
+   "icons": {
+      "128": "icons/icon.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAipM8dFXxSH0w4g5StzFKE/WzeLXq8wOPSjI1S6Eax80V5qSJfuCNKMkCPklJZAN7U0RdsgBvKa6KsFJm9f2230Oamh0pFTmq3UIpWSSFr9eJ22NzGiEc/wYeiymqJacfvAoMe7uSmN8sFvKiZ8mZKlNEVXqEz6rN+mJQXIBIn6/1y+fvlt0y1O5B9WGRwMks1RRIs+HEkWN5Bc2Vd+TkxCmTY5/3QWVFJngeFKDxOfHtOCaU4/SS59nrvXXFEVSRaJxs+NWCMvsg/2UUkpBk62wt4flb+KUgziiCNJSH8m5BuHkp+loLkdfYLkmpOCrqw0Ah0nXWWDtqeZ2jJ+uXFQIDAQAB",
+   "manifest_version": 3,
+   "name": "ElementHider",
+   "options_ui": {
+      "page": "src/browser_action/KeywordEditor.html"
+   },
+   "permissions": [ "storage", "tabs" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.0.2",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "src/browser_action/guide.html", "src/browser_action/css/guide.css" ]
+   } ]
+}

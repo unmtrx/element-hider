@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700|Source+Sans+Pro:400,600" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/popup.css" />
+  </head>
+  <body>
+    <div id="mainPopup">
+      <div class="top-bar-actions">
+        <a id="guideLink" href="#" title="Open Guide">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg>
+        </a>
+        <a id="optionsLink" href="#" title="Advanced Config">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px">
+              <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.69-1.62-0.92L14.4,2.23C14.34,2.01,14.13,1.86,13.89,1.86 h-3.78c-0.24,0-0.45,0.15-0.51,0.37l-0.34,2.71c-0.59-0.23-1.12,0.54-1.62,0.92L5.24,5.05C5.02,4.98,4.77,5.05,4.65,5.27L2.73,8.59 c-0.12,0.2-0.07,0.47,0.12,0.61L4.88,11c-0.05,0.3-0.07,0.62-0.07,0.94c0,0.32,0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.69,1.62,0.92l0.34,2.71 c0.06,0.22,0.27,0.37,0.51,0.37h3.78c0.24,0-0.45,0.15-0.51,0.37l0.34-2.71c0.59-0.23,1.12-0.54,1.62-0.92l2.39,0.96 c0.22,0.07,0.47,0,0.59-0.22l1.92-3.32c0.12-0.2,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"></path>
+            </svg>
+        </a>
+      </div>
+      <div class="logo-container">
+        <h1 id="logo">Element-Hider</h1>
+      </div>
+
+      <div id="controls">
+          <div class="control-wrapper">
+              <span class="control-label-text">Hiding Active</span>
+              <label class="switch">
+                  <input type="checkbox" id="toggle">
+                  <span class="slider round"></span>
+              </label>
+          </div>
+          <div class="control-wrapper">
+              <span class="control-label-text">Test Mode</span>
+              <label class="switch">
+                  <input type="checkbox" id="toggleTesting">
+                  <span class="slider round"></span>
+              </label>
+          </div>
+      </div>
+      <div class="keywords-manager">
+        <div class="manager-header">
+            <h2 id="subLogo">Keywords</h2>
+            <div class="manager-tools">
+                <button id="pick-word-btn" class="tool-btn" title="Select Word">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M2.5 4v3h5v12h3V7h5V4h-13zm19 5h-9v3h3v7h3v-7h3V9z"/></svg>
+                </button>
+                <button id="pick-element-btn" class="tool-btn" title="Select Element">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="22px" height="22px">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                    </svg>
+                </button>
+                <button id="toggle-view-btn" class="tool-btn" title="Bulk Edit">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="list-view">
+            <div id="add-keyword-form-container">
+                 <div id="add-keyword-form">
+                    <div class="form-row"> 
+                        <input type="text" id="new-keyword-text" placeholder="Add new keyword or CSS selector...">
+                        <button id="add-keyword-btn" title="Add Keyword">+</button>
+                    </div>
+                    <div class="form-row options-row">
+                        <label id="exact-match-option"><input type="checkbox" id="new-keyword-exact"> Exact Match</label>
+                        <label id="case-option"><input type="checkbox" id="new-keyword-case"> Case Insensitive</label>
+                        <label><input type="checkbox" id="new-keyword-selector"> CSS Selector</label>
+                    </div>
+                    <div class="advanced-options-header">
+                        <label for="advanced-toggle" class="advanced-options-label">Advanced Options</label>
+                        <label class="switch">
+                            <input type="checkbox" id="advanced-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div id="advanced-options-container" class="hidden">
+                         <div class="form-row url-row" title="The keyword will only be active on pages containing this URL (e.g., 'example.com'). Leave blank for all sites.">
+                            <div class="url-input-container">
+                                <input type="text" id="new-keyword-url" class="url-input" placeholder="e.g., example.com">
+                                <button id="get-current-url-btn" class="url-tool-btn" title="Use current site's URL">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-row sensitivity-row">
+                            <label class="sensitivity-label">Keyword Sensitivity</label>
+                            <div class="sensitivity-slider-container">
+                               <input type="range" id="new-keyword-sensitivity" min="1" max="500" value="50" class="sensitivity-input">
+                               <span class="sensitivity-value-display">50</span>
+                            </div>
+                        </div>
+                         <div class="form-row advanced-actions">
+                            <a href="#" id="clear-new-keyword-btn">Clear All Fields</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <fieldset id="saved-keywords-fieldset">
+                <legend>Saved Keywords</legend>
+                <div id="keyword-list-container"></div>
+            </fieldset>
+        </div>
+
+        <div id="bulk-view" class="hidden">
+            <textarea id="keywords-bulk" placeholder="Separate keywords with a new line..."></textarea>
+            <button id="save-bulk-btn">Save Bulk Changes</button>
+        </div>
+
+        <div id="storage-meter-container">
+            <div id="storage-label">Storage Used: <span id="storage-percentage">0%</span></div>
+            <div id="storage-progress-bar"><div id="storage-progress"></div></div>
+        </div>
+      </div>   
+    <div id="modal-overlay" class="hidden"></div>
+    <div id="edit-modal" class="hidden">
+        <div class="modal-content">
+            <h3>Edit Keyword</h3>
+            <div id="edit-keyword-form"></div>
+            <div class="modal-actions"><button id="modal-cancel-btn">Cancel</button><button id="modal-save-btn">Save Changes</button></div>
+        </div>
+    </div>
+    <template id="keyword-item-template">
+        <div class="keyword-item">
+            <span class="keyword-text"></span>
+            <div class="keyword-tags">
+                <span class="tag selector-tag hidden" title="CSS Selector">&lt;/&gt;</span>
+                <span class="tag exact-tag hidden" title="Exact Match">*</span>
+                <span class="tag case-tag hidden" title="Case-Insensitive">aA</span>
+            </div>
+            <span class="keyword-url"></span>
+            <button class="delete-btn" title="Delete keyword">X</button>
+        </div>
+    </template>
+    <script type="text/javascript" src="../shared/keywordUtils.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
+  </body>
+</html>
